@@ -1,6 +1,9 @@
-document.getElementById("cityInput").addEventListener("keypress", function (event) {
+const input = document.getElementById("cityInput")
+
+input.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         getWeather();
+        input.value = ""
     }
 });
 
@@ -31,6 +34,7 @@ async function getWeather() {
                 <p>💨 Wind Speed: ${data.wind.speed} m/s</p>
             `;
         }
+        input.value = ""
     } catch (error) {
         console.error("Fetch Error:", error);
         weatherResult.innerHTML = "❌ Error fetching data!";
